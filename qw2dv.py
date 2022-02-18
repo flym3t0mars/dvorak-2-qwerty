@@ -9,40 +9,32 @@ dvorak = ["'",',','.','p','y','f','g','c','r','l','/','=','\\',
 	    ';','q','j','k','x','b','m','w','v','z',' '
 	 ]
 
-def dv2qw():
-	global s
-	s=input('type: message:')
-	try:
-		for key in s.lower():
-			index=dvorak.index(key)
-			print(qwerty[index],end='')
-		print('\n')
-	except Exception as e:
-		print(e)
-	else:
-		exit()
-
-def qw2dv():
+def qw2dv(a):
 	global ss
 	ss=input('type message: ')
 	try:
-		for key in ss.lower():
-			index=qwerty.index(key)
-			print(dvorak[index],end='')
+		if a == 'qw':
+			for key in ss.lower():
+				index=qwerty.index(key)
+				print(dvorak[index],end='')
+		elif a == 'dv':
+			for key in ss.lower():
+				index=dvorak.index(key)
+				print(qwerty[index],end='')
 		print('\n')
 	except Exception as e:
 		print(e)
 	else:
 		exit()
-
 def opt():
 	choice=input('qw or dv: ')
 	if choice == 'qw':
-		qw2dv()
+		qw2dv(choice)
 	elif choice == 'dv':
-		dv2qw()
+		#dv2qw()
+		qw2dv(choice)
 	else:
-		print('enter one of the choices (qw / dv)\n')
+		print('enter one of the choices (qw / dv):\n')
 		opt()
 
 def main():
