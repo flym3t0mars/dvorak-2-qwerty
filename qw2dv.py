@@ -56,7 +56,7 @@ def opt():
 
 def main():
 	ask=input('do you want to use a file: ')
-	if ask == 'no'
+	if ask == 'no':
 		opt()
 	else:
 		file(sys.argv[1])
