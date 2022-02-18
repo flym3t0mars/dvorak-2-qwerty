@@ -1,13 +1,29 @@
 #! /bin/python
+import sys
 
 qwerty = ['q','w','e','r','t','y','u','i','o','p','[',']','\\',
 	   'a','s','d','f','g','h','j','k','l',';',"'",
-	    'z','x','c','v','b','n','m',',','.','/',' '
+	    'z','x','c','v','b','n','m',',','.','/',' ',
+		'\n'
 	 ]
 dvorak = ["'",',','.','p','y','f','g','c','r','l','/','=','\\',
 	   'a','o','e','u','i','d','h','t','n','s','-',
-	    ';','q','j','k','x','b','m','w','v','z',' '
+	    ';','q','j','k','x','b','m','w','v','z',' ',
+		'\n'
 	 ]
+
+
+def file(b='null'):
+	if b == 'null':
+		exit()
+	else:
+		with open (b,'r')as r:
+			content = r.read()
+			print(content,end='')
+	for key in content.lower():
+		index=dvorak.index(key)
+		print(qwerty[index],end='')
+
 
 def qw2dv(a):
 	global ss
@@ -38,6 +54,7 @@ def opt():
 		opt()
 
 def main():
+	file(sys.argv[1])
 	opt()
 
 if __name__ == "__main__":
