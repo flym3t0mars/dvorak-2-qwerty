@@ -20,6 +20,7 @@ def file(b='null'):
 		with open (b,'r')as r:
 			content = r.read()
 			print(content,end='')
+	print('='*8)
 	for key in content.lower():
 		index=dvorak.index(key)
 		print(qwerty[index],end='')
@@ -54,8 +55,11 @@ def opt():
 		opt()
 
 def main():
-	file(sys.argv[1])
-	opt()
+	ask=input('do you want to use a file: ')
+	if ask == 'no'
+		opt()
+	else:
+		file(sys.argv[1])
 
 if __name__ == "__main__":
 	main()
