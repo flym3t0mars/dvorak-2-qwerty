@@ -35,12 +35,18 @@ def qw2dv():
 	else:
 		exit()
 
-def main():
+def opt():
 	choice=input('qw or dv: ')
 	if choice == 'qw':
 		qw2dv()
-	else:
+	elif choice == 'dv':
 		dv2qw()
+	else:
+		print('enter one of the choices (qw / dv)\n')
+		opt()
+
+def main():
+	opt()
 
 if __name__ == "__main__":
 	main()
