@@ -13,7 +13,7 @@ def dv2qw():
 	global s
 	s=input('type: message:')
 	try:
-		for key in s:
+		for key in s.lower():
 			index=dvorak.index(key)
 			print(qwerty[index],end='')
 		print('\n')
@@ -26,7 +26,7 @@ def qw2dv():
 	global ss
 	ss=input('type message: ')
 	try:
-		for key in ss:
+		for key in ss.lower():
 			index=qwerty.index(key)
 			print(dvorak[index],end='')
 		print('\n')
