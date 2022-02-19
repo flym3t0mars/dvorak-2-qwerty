@@ -13,6 +13,19 @@ dvorak = ["'",',','.','p','y','f','g','c','r','l','/','=','\\',
 	 ]
 
 
+
+def oskb():
+	with open('tt.md','r')as r:
+		keyboard=r.readlines()
+		for lines in keyboard:
+			if "#" in lines:
+				pass
+			else:
+				print(lines,end='')
+
+		print(keyboard)
+
+
 def file(b='null'):
 	if b == 'null':
 		exit()
@@ -55,6 +68,7 @@ def opt():
 		opt()
 
 def main():
+#	oskb()
 	ask=input('do you want to use a file (y/n): ')
 	if ask == 'y':
 		file(sys.argv[1])
