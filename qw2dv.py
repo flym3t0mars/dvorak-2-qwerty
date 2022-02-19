@@ -55,11 +55,13 @@ def opt():
 		opt()
 
 def main():
-	ask=input('do you want to use a file: ')
-	if ask == 'no':
+	ask=input('do you want to use a file (y/n): ')
+	if ask == 'y':
+		file(sys.argv[1])
+	elif ask == 'n':
 		opt()
 	else:
-		file(sys.argv[1])
+		pass
 
 if __name__ == "__main__":
 	main()
