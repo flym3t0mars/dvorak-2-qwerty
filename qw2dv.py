@@ -42,7 +42,9 @@ def pressed(msg='null'):
 	while True:
 		for keys in msg:
 			if keys == ' ':
-				pass
+                                print(qw.replace('[                 ]',' [               ]'))
+                                zz(timing)
+                                clear()
 			else:
 				print(qw.replace(keys,pres))
 				zz(timing)
