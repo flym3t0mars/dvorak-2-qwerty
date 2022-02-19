@@ -15,7 +15,10 @@ def on_key_press(key): #what to do on key-press
 with keyboard.Listener(on_press = on_key_press) as press_listener: #setting code for listening key-press
     press_listener.join()
 
-t = time.time() #reading time in sec
 
 with keyboard.Listener(on_release = on_key_release) as release_listener: #setting code for listening key-release
     release_listener.join()
+
+t = time.time() #reading time in sec
+
+
