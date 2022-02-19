@@ -19,8 +19,15 @@ dvorak = ["'",',','.','p','y','f','g','c','r','l','/','=','\\',
 # but refresh the page without losing the message typed
 # real time key press
 
+qw="""
+[q][w][e][r][t][y][u][i][o][p][[][]][\]
+ [a][s][d][f][g][h][j][k][l][;][']
+  [z][x][c][v][b][n][m][,][.][/]
+       [                 ]
+"""
 
-pressed = '■'
+pres = '■'
+timing=0.15
 
 def oskb():
 	with open('tt.md','r')as r:
@@ -30,17 +37,16 @@ def oskb():
 				pass
 			else:
 				print(lines,end='')
-		
-
-		# print(keyboard)
 
 def pressed(msg='null'):
 	while True:
-		oskb()
-		zz(0.01)
-		clear()
-	
-
+		for keys in msg:
+			if keys == ' ':
+				pass
+			else:
+				print(qw.replace(keys,pres))
+				zz(timing)
+				clear()	
 
 def clear():
 	try:
@@ -53,7 +59,6 @@ def clear():
 	else:
 		pass
 
-
 def file(b='null'):
 	if b == 'null':
 		exit()
@@ -65,7 +70,6 @@ def file(b='null'):
 	for key in content.lower():
 		index=dvorak.index(key)
 		print(qwerty[index],end='')
-
 
 def qw2dv(a):
 	global ss
@@ -89,22 +93,25 @@ def opt():
 	if choice == 'qw':
 		qw2dv(choice)
 	elif choice == 'dv':
-		#dv2qw()
 		qw2dv(choice)
 	else:
 		print('enter one of the choices (qw / dv):\n')
 		opt()
 
-def main():
-#	oskb()
-	pressed()
-	ask=input('do you want to use a file (y/n): ')
-	if ask == 'y':
-		file(sys.argv[1])
-	elif ask == 'n':
-		opt()
+def ask(q,r1,r2):
+	question = input(f'{q} (y/n): ')
+	if question == 'y':
+		print(r1)
+	elif question == 'n':
+		print(r2)
 	else:
 		pass
+
+
+def main():
+#	oskb()
+	ask('do you want to type something',pressed(input('type: ')),exit())
+	ask('do you want to use a file',file(),opt())
 
 if __name__ == "__main__":
 	main()
