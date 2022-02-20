@@ -51,17 +51,18 @@ def clear():
 
 def file(b='null'):
 	if b == 'null':
-		print(f'file provided: {b}')
+		print(f'file provided: {b}\n')
 		exit()
 	else:
-		print(f'file provided: {b}')
+		print(f'file provided: {b}\n')
 		with open (b,'r')as r:
 			content = r.read()
 			print(content,end='')
-	print('='*8+'\n')
+	print('='*8)
 	for key in content.lower():
 		index=dvorak.index(key)
 		print(qwerty[index],end='')
+	print('\n')
 
 def qw2dv(a):
 	global ss
@@ -116,7 +117,7 @@ def ask(q):
 	elif question == 'n':
 		ask2 = input(f'do you want to use a file (y/n): ')
 		if ask2 == 'y':
-			file()
+			file(sys.argv[1])
 		if ask2 == 'n':
 			ask3 = input('do you want to type without animation (y/n): ')
 			if ask3 == 'y':
