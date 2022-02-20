@@ -3,6 +3,11 @@ import sys
 from os import system as s
 from time import sleep as zz
 
+# I want to simulate the press with these ascii character
+# also redraw the keyboard with the key pressed
+# but refresh the page without losing the message typed
+# real time key press
+
 qwerty = ['q','w','e','r','t','y','u','i','o','p','[',']','\\',
 	   'a','s','d','f','g','h','j','k','l',';',"'",
 	    'z','x','c','v','b','n','m',',','.','/',' ',
@@ -13,11 +18,6 @@ dvorak = ["'",',','.','p','y','f','g','c','r','l','/','=','\\',
 	    ';','q','j','k','x','b','m','w','v','z',' ',
 		'\n'
 	 ]
-
-# I want to simulate the press with these ascii character
-# also redraw the keyboard with the key pressed
-# but refresh the page without losing the message typed
-# real time key press
 
 qw="""
 [q][w][e][r][t][y][u][i][o][p][[][]][\]
@@ -38,18 +38,6 @@ def oskb():
 			else:
 				print(lines,end='')
 
-def pressed(msg='null'):
-	while True:
-		for keys in msg:
-			if keys == ' ':
-                                print(qw.replace('[                 ]',' [               ]'))
-                                zz(timing)
-                                clear()
-			else:
-				print(qw.replace(keys,pres))
-				zz(timing)
-				clear()	
-
 def clear():
 	try:
 		if sys.platform != 'linux':
@@ -63,12 +51,14 @@ def clear():
 
 def file(b='null'):
 	if b == 'null':
+		print(f'file provided: {b}')
 		exit()
 	else:
+		print(f'file provided: {b}')
 		with open (b,'r')as r:
 			content = r.read()
 			print(content,end='')
-	print('='*8)
+	print('='*8+'\n')
 	for key in content.lower():
 		index=dvorak.index(key)
 		print(qwerty[index],end='')
@@ -90,30 +80,57 @@ def qw2dv(a):
 		print(e)
 	else:
 		exit()
+
+
+def pressed(msg='null'):
+	opt()
+	while True:
+		for keys in msg:
+			if keys == ' ':
+                                print(choice.replace('[                 ]',' [               ]'))
+                                zz(timing)
+                                clear()
+			else:
+				print(choice.replace(keys,pres))
+				zz(timing)
+				clear()
+
 def opt():
+	global choice
 	choice=input('qw or dv: ')
 	if choice == 'qw':
-		qw2dv(choice)
+		pass
+#		qw2dv(choice)
 	elif choice == 'dv':
-		qw2dv(choice)
+		pass
+#		qw2dv(choice)
 	else:
 		print('enter one of the choices (qw / dv):\n')
 		opt()
+	return choice
 
-def ask(q,r1,r2):
+def ask(q):
 	question = input(f'{q} (y/n): ')
 	if question == 'y':
-		print(r1)
+		pressed(input('type: '))
 	elif question == 'n':
-		print(r2)
+		ask2 = input(f'do you want to use a file (y/n): ')
+		if ask2 == 'y':
+			file()
+		if ask2 == 'n':
+			ask3 = input('do you want to type without animation (y/n): ')
+			if ask3 == 'y':
+				opt()
+				qw2dv(choice)
+			if ask3 == 'n':
+				exit()
 	else:
 		pass
 
 
 def main():
-#	oskb()
-	ask('do you want to type something',pressed(input('type: ')),exit())
-	ask('do you want to use a file',file(),opt())
+	ask('do you want to type with animation')
+
 
 if __name__ == "__main__":
 	main()
