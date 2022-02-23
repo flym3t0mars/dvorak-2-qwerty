@@ -1,0 +1,41 @@
+#! /bin/python
+# dcode.fr/bacon-cipher
+# change charcter 1 and 2
+import sys
+
+try:
+	f_char=sys.argv[1]
+	s_char=sys.argv[2]
+except Exception as e:
+	print(e)
+else:
+	pass
+
+def encode(s):
+	print('\n')
+	for char in s:
+		print(char.replace('a',f_char).replace('b',s_char),end='')
+	print('\n')
+	pass
+
+def decode(s):
+	print('\n')
+	for char in s:
+		print(char.replace(f_char,'a').replace(s_char,'b'),end='')
+	print('\n')
+	pass
+
+def main():
+	ask=input('(E)ncode or (D)ecode: ')
+	if ask == 'd'.lower():
+		text=input('message: ')
+		decode(text)
+	elif ask == 'e'.lower():
+		text=input('message: ')
+		encode(text)
+	else:
+		print("\n please make a proper selection")
+		main()
+
+if __name__=="__main__":
+	main()
