@@ -14,14 +14,14 @@ else:
 def encode(s):
 	print('\n')
 	for char in s:
-		print(char.replace('a',f_char).replace('b',s_char),end='')
+		print(char.replace('A',f_char).replace('B'.casefold(),s_char),end='')
 	print('\n')
 	pass
 
 def decode(s):
 	print('\n')
 	for char in s:
-		print(char.replace(f_char,'a').replace(s_char,'b'),end='')
+		print(char.replace(f_char,'A').replace(s_char,'B'),end='')
 	print('\n')
 	pass
 
