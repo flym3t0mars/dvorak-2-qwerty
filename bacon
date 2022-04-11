@@ -14,7 +14,7 @@ else:
 def encode(s):
 	print('\n')
 	for char in s:
-		print(char.replace('A',f_char).replace('B'.casefold(),s_char),end='')
+		print(char.replace('A',f_char).replace('B',s_char),end='')
 	print('\n')
 	pass
 
